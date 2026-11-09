@@ -1,0 +1,67 @@
+<!-- interpolation {{}}
+
+
+
+   property binding --)
+   <input type="text" bind-disabled="isDisabled">
+
+   ==
+   <input type="text" [disabled]="isDisabled">
+ ==
+    <input type="text" disabled="{{isDisabled}}">
+
+
+ Store Index  --) attribute binding
+    <p [attr.data-index]="index"></p>
+
+ event binding
+<button (click)="updateData();">fire</button> -->
+
+<!--
+<button (click)="updateCount();">Fire</button>
+
+
+
+<ng-container *ngIf="count == 1">
+    <p>one</p>
+</ng-container>
+<ul>
+    <ng-container *ngFor="let course of courses; index as i">
+        <li>{{i}} : {{course}}</li>
+    </ng-container>
+</ul> -->
+
+<div id="Gallery" class="py-5">
+  <div class="container">
+      <div class="row row-gap-4">
+          <ng-container *ngFor="let img of images; index as i">
+              <div class="col-lg-4 col-md-6 part">
+                <div class="item rounded-3 overflow-hidden">
+                  <div class="mainImg">
+                  <img src="assets/images/{{img}}" [attr.data-index]="i" #currentImg alt="image{{i+1}}" class="img-fluid">
+                  </div>
+                  <div class="layout">
+                    <i class="fa-regular fa-square-plus" (click)="openPopup(popup, popImg, currentImg)"></i>
+                  </div>
+                </div>
+              </div>
+          </ng-container>
+      </div>
+  </div>
+</div>
+
+
+<div class="popup" #popup (click)="closePopup()">
+  <div class="box rounded-3 overflow-hidden" (click)="stop($event)">
+      <img src="assets/images/1.jpg" #popImg alt="image1" class="img-fluid">
+      <i class="fa-solid fa-xmark close" (click)="closePopup()"></i>
+      <i class="fa-solid fa-angle-right next" (click)="nextImg()"></i>
+      <i class="fa-solid fa-angle-left prev" (click)="prevImg()"></i>
+
+      <ul class="list-unstyled d-flex justify-content-center w-100 column-gap-3">
+      <ng-container *ngFor="let img of images; index as i">
+        <li class="{{currentImgIndex == i ? 'active' : ''}}" (click)="changeImg(i)">{{i+1}}</li>
+      </ng-container>
+      </ul>
+  </div>
+</div>

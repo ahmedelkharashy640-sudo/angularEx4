@@ -1,0 +1,154 @@
+#Gallery
+{
+ .part
+ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   .item
+  {
+    width: 250px;
+    position: relative;
+
+    .mainImg
+    {
+      transition-duration: 0.5s;
+
+    }
+     &:hover .mainImg
+    {
+      transform: scale(1.2);
+    }
+
+    .layout
+    {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+
+
+      i {
+
+          cursor: pointer;
+          transition-duration: 0.5s;
+          opacity: 0;
+          transform: rotate(-180deg);
+        }
+      &:hover
+      {
+        i {
+          color: var(--goldColor);
+          opacity: 1;
+          transform: rotate(0deg);
+        }
+
+      }
+
+    }
+    &:hover .layout
+    {
+            background-color: rgba(0,0,0,0.3);
+
+    }
+  }
+
+ }
+}
+
+.popup
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
+  display: none;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+
+  &.active
+  {
+    display: flex;
+
+  }
+
+  &.show
+  {
+    opacity: 1;
+  }
+  .box
+  {
+    width: 500px;
+    position: relative;
+
+    .close
+    {
+      top: 20px;
+      right: 20px;
+
+    }
+    .next,
+    .prev
+    {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .next
+    {
+      right: 20px;
+    }
+    .prev
+    {
+      left: 20px;
+    }
+    i{
+      position: absolute;
+      cursor: pointer;
+      color:var(--goldColor);
+      background-color: #000;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    ul
+    {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      li
+      {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color:var(--goldColor);
+        background-color: #000;
+        border-radius: 50%;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        &.active,
+        &:hover
+        {
+          color:#000;
+          background-color: var(--goldColor);
+        }
+      }
+    }
+  }
+}
+
